@@ -50,6 +50,12 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+hostnamectl set-hostname $PRIMARY_HOSTNAME
+hostnamectl set-hostname $PRIMARY_HOSTNAME --pretty
+hostname $PRIMARY_HOSTNAME
+sysctl -w net.ipv6.conf.default.disable_ipv6=0
+sysctl -w net.ipv6.conf.all.disable_ipv6=0
+
 # Clone the Mail-in-a-Box repository if it doesn't exist.
 if [ ! -d "$HOME/mailinabox" ]; then
 	if [ ! -f /usr/bin/git ]; then
@@ -64,20 +70,12 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	fi
 
 	echo "Downloading Mail-in-a-Box $TAG. . ."
-	git clone \
-		-b "$TAG" --depth 1 \
-		"$SOURCE" \
-		"$HOME/mailinabox" \
-		< /dev/null 2> /dev/null
-
+	git clone https://github.com/mail-in-a-box/mailinabox
+    cd mailinabox
+    git checkout $TAG
+    cd ..
 	echo
 fi
-
-hostnamectl set-hostname $PRIMARY_HOSTNAME
-hostnamectl set-hostname $PRIMARY_HOSTNAME --pretty
-hostname $PRIMARY_HOSTNAME
-# sysctl -w net.ipv6.conf.default.disable_ipv6=0
-# sysctl -w net.ipv6.conf.all.disable_ipv6=0
 
 # Change directory to it.
 cd "$HOME/mailinabox" || exit
