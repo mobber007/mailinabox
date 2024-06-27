@@ -58,13 +58,10 @@ For experts, start with a completely fresh (really, I mean it) Ubuntu 22.04 LTS 
 
 Clone this repository and checkout the tag corresponding to the most recent release:
 
-	$ git clone https://github.com/mobber007/mailinabox
-	$ cd mailinabox
-	$ git checkout v68
-
-Begin the installation.
-
-	$ sudo setup/start.sh
+	git clone https://github.com/mobber007/mailinabox
+	cd mailinabox
+	git checkout v68
+    sudo setup/start.sh
 
 The installation will install, uninstall, and configure packages to turn the machine into a working, good mail server.
 
