@@ -150,7 +150,7 @@ echo "to enable HTTPS connections to your box. We're automatically"
 echo "agreeing you to their subscriber agreement. See https://letsencrypt.org."
 echo
 certbot register --agree-tos --non-interactive -m "me@$PRIMARY_HOSTNAME" --config-dir "$STORAGE_ROOT/ssl/lets_encrypt"
-management/ssl_certificates.py -q  2>&1
+# management/ssl_certificates.py -q  2>&1
 fi
 
 # Done.
