@@ -340,6 +340,8 @@ def provision_certificates(env, limit_domains):
 					certbotret = subprocess.check_output([
 						"certbot",
 						"certonly",
+						"--agree-tos",
+						"--email", "me@trkglobal.ro",
 						#"-v", # just enough to see ACME errors
 						"--non-interactive", # will fail if user hasn't registered during Mail-in-a-Box setup
 
