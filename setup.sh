@@ -2,7 +2,7 @@
 #########################################################
 # This script is intended to be run like this:
 #
-#   export PRIMARY_HOSTNAME=mailinabox.local && curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
+#   export PRIMARY_HOSTNAME=mailinabox.local && curl -H 'Cache-Control: no-cache, no-store' -H 'Content-Type: application/x-sh' -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
 #
 #########################################################
 
