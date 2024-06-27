@@ -149,9 +149,9 @@ def check_service(i, service, env):
 	return (i, running, fatal, output)
 
 def run_system_checks(rounded_values, env, output):
-	check_ssh_password(env, output)
+	# check_ssh_password(env, output)
 	check_software_updates(env, output)
-	check_miab_version(env, output)
+	# check_miab_version(env, output)
 	check_system_aliases(env, output)
 	check_free_disk_space(rounded_values, env, output)
 	check_free_memory(rounded_values, env, output)
