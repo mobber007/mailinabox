@@ -22,22 +22,8 @@ if [ -z "$TAG" ]; then
 	UBUNTU_VERSION=$( lsb_release -d | sed 's/.*:\s*//' | sed 's/\([0-9]*\.[0-9]*\)\.[0-9]/\1/' )
 	if [ "$UBUNTU_VERSION" == "Ubuntu 22.04 LTS" ]; then
 		# This machine is running Ubuntu 22.04, which is supported by
-		# Mail-in-a-Box versions 60 and later.
+		# Mail-in-a-Box versions 68 and later.
 		TAG=v68
-	elif [ "$UBUNTU_VERSION" == "Ubuntu 18.04 LTS" ]; then
-		# This machine is running Ubuntu 18.04, which is supported by
-		# Mail-in-a-Box versions 0.40 through 5x.
-		echo "Support is ending for Ubuntu 18.04."
-		echo "Please immediately begin to migrate your data to"
-		echo "a new machine running Ubuntu 22.04. See:"
-		echo "https://mailinabox.email/maintenance.html#upgrade"
-		TAG=v57a
-	elif [ "$UBUNTU_VERSION" == "Ubuntu 14.04 LTS" ]; then
-		# This machine is running Ubuntu 14.04, which is supported by
-		# Mail-in-a-Box versions 1 through v0.30.
-		echo "Ubuntu 14.04 is no longer supported."
-		echo "The last version of Mail-in-a-Box supporting Ubuntu 14.04 will be installed."
-		TAG=v0.30
 	else
 		echo "This script may be used only on a machine running Ubuntu 14.04, 18.04, or 22.04."
 		exit 1
