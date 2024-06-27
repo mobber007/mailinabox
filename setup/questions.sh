@@ -1,28 +1,11 @@
 #!/bin/bash
 if [ -z "${NONINTERACTIVE:-}" ]; then
-	# Install 'dialog' so we can ask the user questions. The original motivation for
-	# this was being able to ask the user for input even if stdin has been redirected,
-	# e.g. if we piped a bootstrapping install script to bash to get started. In that
-	# case, the nifty '[ -t 0 ]' test won't work. But with Vagrant we must suppress so we
-	# use a shell flag instead. Really suppress any output from installing dialog.
-	#
-	# Also install dependencies needed to validate the email address.
 	if [ ! -f /usr/bin/dialog ] || [ ! -f /usr/bin/python3 ] || [ ! -f /usr/bin/pip3 ]; then
 		echo "Installing packages needed for setup..."
 		apt-get -q -q update
 		apt_get_quiet install dialog python3 python3-pip  || exit 1
 	fi
-
-	# Installing email_validator is repeated in setup/management.sh, but in setup/management.sh
-	# we install it inside a virtualenv. In this script, we don't have the virtualenv yet
-	# so we install the python package globally.
 	hide_output pip3 install "email_validator>=1.0.0" || exit 1
-
-	message_box "Mail-in-a-Box Installation" \
-		"Hello and thanks for deploying a Mail-in-a-Box!
-		\n\nI'm going to ask you a few questions.
-		\n\nTo change your answers later, just run 'sudo mailinabox' from the command line.
-		\n\nNOTE: You should only install this on a brand new Ubuntu installation 100% dedicated to Mail-in-a-Box. Mail-in-a-Box will, for example, remove apache2."
 fi
 
 EMAIL_ADDR="me@$PRIMARY_HOSTNAME"
