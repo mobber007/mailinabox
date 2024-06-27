@@ -73,6 +73,12 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	echo
 fi
 
+hostnamectl set-hostname $PRIMARY_HOSTNAME
+hostnamectl set-hostname $PRIMARY_HOSTNAME --pretty
+hotname $PRIMARY_HOSTNAME
+sysctl -w net.ipv6.conf.default.disable_ipv6=0
+sysctl -w net.ipv6.conf.all.disable_ipv6=0
+
 # Change directory to it.
 cd "$HOME/mailinabox" || exit
 
