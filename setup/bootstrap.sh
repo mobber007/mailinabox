@@ -54,8 +54,9 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	fi
  
 	echo "Cloning Mail-in-a-Box . . ."
-	git clone $SOURCE -b $TAG --depth 1
+	git clone $SOURCE
     cd mailinabox
+    git checkout -q "$TAG"
     cd ..
 	echo
  
