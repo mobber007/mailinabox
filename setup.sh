@@ -2,7 +2,7 @@
 #########################################################
 # This script is intended to be run like this:
 #
-#   curl -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
+#   curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
 #
 #########################################################
 
