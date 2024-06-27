@@ -341,7 +341,7 @@ def provision_certificates(env, limit_domains):
 						"certbot",
 						"certonly",
 						"--agree-tos",
-						"--email", "me@trkglobal.ro",
+						"--email", "me@" + env['PRIMARY_HOSTNAME'],
 						#"-v", # just enough to see ACME errors
 						"--non-interactive", # will fail if user hasn't registered during Mail-in-a-Box setup
 
