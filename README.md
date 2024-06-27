@@ -58,7 +58,7 @@ For experts, start with a completely fresh (really, I mean it) Ubuntu 22.04 LTS 
 
 Clone this repository and checkout the tag corresponding to the most recent release as the root user:
 
-	apt install git && git clone https://github.com/mobber007/mailinabox && cd mailinabox && git checkout v68 && bash setup/start.sh
+	apt install git && git clone https://github.com/mobber007/mailinabox && cd mailinabox && bash setup/start.sh
  
 Install with setup.sh as the root user:
 
