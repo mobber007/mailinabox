@@ -1,4 +1,4 @@
-Mail-in-a-Box
+Mail-in-a-Box/your/desired/path
 =============
 
 By [@JoshData](https://github.com/JoshData) and [contributors](https://github.com/mail-in-a-box/mailinabox/graphs/contributors).
@@ -62,7 +62,7 @@ Clone this repository and checkout the tag corresponding to the most recent rele
  
 Install with setup.sh as the root user:
 
-	curl -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
+	export PRIMARY_HOSTNAME=mailinabox.local && curl -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
 
 
 The installation will install, uninstall, and configure packages to turn the machine into a working, good mail server.
