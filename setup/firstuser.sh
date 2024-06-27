@@ -4,7 +4,7 @@ if [ -z "$(management/cli.py user)" ]; then
 
 	# Use me@PRIMARY_HOSTNAME
 	EMAIL_ADDR=me@$PRIMARY_HOSTNAME
-	EMAIL_PW="$PRIMARY_HOSTNAME-12345678"
+	EMAIL_PW=$(date +%s | sha256sum | base64 | head -c 32)
 	echo
 	echo "Creating a new administrative mail account for $EMAIL_ADDR with password $EMAIL_PW."
 	echo
