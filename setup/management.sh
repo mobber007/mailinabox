@@ -15,7 +15,6 @@ echo "Installing Mail-in-a-Box system management daemon..."
 # certbot installs EFF's certbot which we use to
 # provision free TLS certificates.
 apt_install duplicity python3-pip virtualenv certbot rsync
-pip3 install certbot-nginx
 
 # b2sdk is used for backblaze backups.
 # boto3 is used for amazon aws backups.
@@ -48,7 +47,7 @@ hide_output $venv/bin/pip install --upgrade \
 	flask dnspython python-dateutil expiringdict gunicorn \
 	qrcode[pil] pyotp \
 	"idna>=2.0.0" "cryptography==37.0.2" psutil postfix-mta-sts-resolver \
-	b2sdk boto3
+	b2sdk boto3 certbot-nginx
 
 # CONFIGURATION
 
