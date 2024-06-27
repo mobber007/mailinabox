@@ -6,28 +6,14 @@
 #
 #########################################################
 
-if [ -z "$TAG" ]; then
-	# If a version to install isn't explicitly given as an environment
-	# variable, then install the latest version. But the latest version
-	# depends on the machine's version of Ubuntu. Existing users need to
-	# be able to upgrade to the latest version available for that version
-	# of Ubuntu to satisfy the migration requirements.
-	#
-	# Also, the system status checks read this script for TAG = (without the
-	# space, but if we put it in a comment it would confuse the status checks!)
-	# to get the latest version, so the first such line must be the one that we
-	# want to display in status checks.
-	#
-	# Allow point-release versions of the major releases, e.g. 22.04.1 is OK.
-	UBUNTU_VERSION=$( lsb_release -d | sed 's/.*:\s*//' | sed 's/\([0-9]*\.[0-9]*\)\.[0-9]/\1/' )
-	if [ "$UBUNTU_VERSION" == "Ubuntu 22.04 LTS" ]; then
-		# This machine is running Ubuntu 22.04, which is supported by
-		# Mail-in-a-Box versions 68 and later.
-		TAG=v68
-	else
-		echo "This script may be used only on a machine running Ubuntu 14.04, 18.04, or 22.04."
-		exit 1
-	fi
+
+# Allow 22.04.1
+UBUNTU_VERSION=$( lsb_release -d | sed 's/.*:\s*//' | sed 's/\([0-9]*\.[0-9]*\)\.[0-9]/\1/' )
+if [ "$UBUNTU_VERSION" == "Ubuntu 22.04 LTS" ]; then
+    echo "Machine running Ubuntu 22.04."
+else
+	echo "This script may be used only on a machine running Ubuntu 22.04."
+	exit 1
 fi
 
 # Are we running as root?
@@ -66,7 +52,7 @@ if [ ! -d "$HOME/mailinabox" ]; then
 		SOURCE=https://github.com/mobber007/mailinabox
 	fi
 
-	echo "Downloading Mail-in-a-Box $TAG. . ."
+	echo "Cloning Mail-in-a-Box . . ."
 	git clone $SOURCE
     cd mailinabox
     cd ..
