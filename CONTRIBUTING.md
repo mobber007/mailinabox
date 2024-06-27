@@ -4,9 +4,9 @@ Mail-in-a-Box is an open source project. Your contributions and pull requests ar
 
 ## Development
 
-To start developing Mail-in-a-Box, [clone the repository](https://github.com/mail-in-a-box/mailinabox) and familiarize yourself with the code.
+To start developing Mail-in-a-Box, [clone the repository](https://github.com/mobber007/mailinabox) and familiarize yourself with the code.
 
-    $ git clone https://github.com/mail-in-a-box/mailinabox
+    git clone https://github.com/mobber007/mailinabox
 
 ### Vagrant and VirtualBox
 
