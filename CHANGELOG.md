@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-Version 68 (April 1, 2024)
+Version 68 (June 27, 2024)
 --------------------------
 
 Package updates:
