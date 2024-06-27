@@ -332,7 +332,7 @@ def provision_certificates(env, limit_domains):
 					f.write(request.public_bytes(Encoding.PEM))
 
 				# Provision, writing to a temporary file.
-				webroot = os.path.join(account_path, 'webroot')
+				webroot = os.path.join(env['STORAGE_ROOT'], 'www/default');
 				os.makedirs(webroot, exist_ok=True)
 				with tempfile.TemporaryDirectory() as d:
 					cert_file = os.path.join(d, 'cert_and_chain.pem')
