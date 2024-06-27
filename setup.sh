@@ -2,7 +2,7 @@
 #########################################################
 # This script is intended to be run like this:
 #
-#   curl https://mailinabox.email/setup.sh | sudo bash
+#   curl -s https://raw.githubusercontent.com/mobber007/mailinabox/master/setup.sh | sudo -E bash
 #
 #########################################################
 
