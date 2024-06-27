@@ -11,6 +11,7 @@
 UBUNTU_VERSION=$( lsb_release -d | sed 's/.*:\s*//' | sed 's/\([0-9]*\.[0-9]*\)\.[0-9]/\1/' )
 if [ "$UBUNTU_VERSION" == "Ubuntu 22.04 LTS" ]; then
     echo "Machine running Ubuntu 22.04."
+    TAG=v68
 else
 	echo "This script may be used only on a machine running Ubuntu 22.04."
 	exit 1
@@ -51,16 +52,29 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	if [ "$SOURCE" == "" ]; then
 		SOURCE=https://github.com/mobber007/mailinabox
 	fi
-
+ 
 	echo "Cloning Mail-in-a-Box . . ."
-	git clone $SOURCE
+	git clone $SOURCE -b $TAG --depth 1
     cd mailinabox
     cd ..
 	echo
+ 
 fi
 
 # Change directory to it.
 cd "$HOME/mailinabox" || exit
 
+# Update it.
+if [ "$TAG" != "$(git describe --always)" ]; then
+	echo "Updating Mail-in-a-Box to $TAG . . ."
+	git fetch --depth 1 --force --prune origin tag "$TAG"
+	if ! git checkout -q "$TAG"; then
+		echo "Update failed. Did you modify something in $PWD?"
+		exit 1
+	fi
+	echo
+fi
+
 # Start setup script.
 setup/start.sh
+
