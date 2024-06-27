@@ -341,14 +341,15 @@ def provision_certificates(env, limit_domains):
 						"certbot",
 						"certonly",
 						"--agree-tos",
-						"--email me@" + env['PRIMARY_HOSTNAME'],
 						"--non-interactive",
+						
 						"-d", ",".join(domain_list),
 						"--csr", csr_file.name,
 						"--cert-path", os.path.join(d, 'cert'),
 						"--chain-path", os.path.join(d, 'chain'),
 						"--fullchain-path", cert_file,
-						"--webroot", "--webroot-path", webroot,
+						
+						"--nginx",
 						"--config-dir", account_path,
 					], stderr=subprocess.STDOUT).decode("utf8")
 					install_cert_copy_file(cert_file, env)
