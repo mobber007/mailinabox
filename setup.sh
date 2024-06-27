@@ -69,7 +69,6 @@ if [ ! -d "$HOME/mailinabox" ]; then
 	echo "Downloading Mail-in-a-Box $TAG. . ."
 	git clone $SOURCE
     cd mailinabox
-    git checkout $TAG
     cd ..
 	echo
 fi
