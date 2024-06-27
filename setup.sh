@@ -42,6 +42,17 @@ hostname $PRIMARY_HOSTNAME
 sysctl -w net.ipv6.conf.default.disable_ipv6=0
 sysctl -w net.ipv6.conf.all.disable_ipv6=0
 
+cat >/etc/init.d/wonready <<EOF
+#!/usr/bin/env bash
+sleep 10s
+sysctl -w net.ipv6.conf.default.disable_ipv6=0
+sysctl -w net.ipv6.conf.all.disable_ipv6=0
+service nsd stop || true
+service nsd start || true
+EOF
+chmod a+x /etc/init.d/wonready
+ln -s /etc/init.d/wonready /etc/rc5.d/S99wonready
+
 # Clone the Mail-in-a-Box repository if it doesn't exist.
 if [ ! -d "$HOME/mailinabox" ]; then
 	if [ ! -f /usr/bin/git ]; then
